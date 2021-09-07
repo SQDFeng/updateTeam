@@ -90,7 +90,7 @@ function showMsg2() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jxhb.json`,  `{"codes":`+JSON.stringify($.packetIdArr)+`}`);
+  await fs.writeFileSync(`./shareCodes/jxhb.json`, JSON.stringify($.packetIdArr));
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 
