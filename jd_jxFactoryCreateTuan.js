@@ -73,7 +73,7 @@ async function writeFile() {
   const tuanIds = info.tuanIds;
   info.tuanIds = [...new Set(tuanIds)];
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateFactoryTuanId.json`, `{"codes":`+JSON.stringify(info)+`}`);
+  await fs.writeFileSync(`./shareCodes/jd_updateFactoryTuanId.json`, JSON.stringify(info));
   console.log(`\n\n${JSON.stringify(info)}\n\n`);
   console.log(`文件写入成功，已经替换`);
 }
