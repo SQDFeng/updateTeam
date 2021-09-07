@@ -132,7 +132,7 @@ function showMsg2() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_red.json`, JSON.stringify($.redPacketId);
+  await fs.writeFileSync(`./shareCodes/jd_red.json`, JSON.stringify($.redPacketId));
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 
