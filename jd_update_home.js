@@ -83,7 +83,7 @@ async function writeFile() {
     "inviteCode": $.shareCode || [],
   }
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateSmallHomeInviteCode.json`, JSON.stringify(info));
+  await fs.writeFileSync(`./shareCodes/jd_updateSmallHomeInviteCode.json`, `{"codes":`+JSON.stringify(info)+`}`);
   console.log(`\n${JSON.stringify(info)}\n`);
   console.log(`文件写入成功,inviteCode已经替换`);
 }

@@ -69,7 +69,7 @@ function showMsg() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateCash.json`, JSON.stringify($.shareCodes));
+  await fs.writeFileSync(`./shareCodes/jd_updateCash.json`, `{"codes":`+JSON.stringify($.shareCodes)+`}`);
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 function jdCash(info=false) {
