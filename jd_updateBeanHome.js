@@ -79,7 +79,7 @@ function showMsg() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateBeanHome.json`, `{"codes":`+JSON.stringify($.codeInfo)+`}`);
+  await fs.writeFileSync(`./shareCodes/jd_updateBeanHome.json`, JSON.stringify($.codeInfo));
   // await fs.writeFileSync('jd_updateBeanHome.json', JSON.stringify($.codeInfo));
   console.log(`文件写入成功,inviteCode已经替换`);
 }
