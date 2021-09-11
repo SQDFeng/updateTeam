@@ -25,7 +25,6 @@ if ($.isNode()) {
     cookiesArr.push(jdCookieNode[item])
   })
   if (process.env.JD_DEBUG && process.env.JD_DEBUG === 'false') console.log = () => {};
-  if (JSON.stringify(process.env).indexOf('GITHUB') > -1) process.exit(0);
 } else {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
@@ -80,7 +79,7 @@ $.appId = 10028;
 async function writeFile() {
   let oldData = $.temp;
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/cfd.json`, JSON.stringify($.shareCodes));
+  await fs.writeFileSync(`./shareCodes/cfd.json`, `{"shareId":`+JSON.stringify($.shareCodes)+`}`);
   // await fs.writeFileSync('jd_shareCodes.json', JSON.stringify(oldData));
   console.log('文件写入成功，新的shareCodes已经替换');
 }
