@@ -56,7 +56,6 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
     }
   }
     await writeFile();
-    await showMsg2();
 })()
     .catch((e) => {
       $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -68,24 +67,6 @@ async function main() {
   await joinActive();
   await $.wait(2000)
   await getUserInfo()
-}
-
-function showMsg2() {
-  return new Promise(async resolve => {
-    try {
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/jd_red.json`}).then((resp) => {
-        if (resp.statusCode === 200) {
-          console.log(`已刷新CDN缓存`)
-        } else {
-          console.log(`刷新失败::${JSON.stringify(resp)}`)
-        }
-      });
-    } catch (e) {
-      $.log(e)
-    } finally {
-      resolve()
-    }
-  })
 }
 
 async function writeFile() {
