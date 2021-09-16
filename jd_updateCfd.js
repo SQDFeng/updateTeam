@@ -71,7 +71,6 @@ $.appId = 10028;
   }
   await showMsg();
   await writeFile();
-  await showMsg2();
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done());
@@ -82,24 +81,6 @@ async function writeFile() {
   await fs.writeFileSync(`./shareCodes/cfd.json`, `{"shareId":`+JSON.stringify($.shareCodes)+`}`);
   // await fs.writeFileSync('jd_shareCodes.json', JSON.stringify(oldData));
   console.log('文件写入成功，新的shareCodes已经替换');
-}
-
-function showMsg2() {
-  return new Promise(async resolve => {
-    try {
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/cfd.json`}).then((resp) => {
-        if (resp.statusCode === 200) {
-          console.log(`已刷新CDN缓存`)
-        } else {
-          console.log(`刷新失败::${JSON.stringify(resp)}`)
-        }
-      });
-    } catch (e) {
-      $.log(e)
-    } finally {
-      resolve()
-    }
-  })
 }
 
 async function cfd() {

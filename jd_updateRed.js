@@ -86,7 +86,6 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
     //}
   }
     await writeFile();
-    await showMsg2();
 })()
     .catch((e) => {
       $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -110,24 +109,6 @@ async function redPacket() {
 function showMsg() {
   console.log(`\n\n${$.name}获得红包：${$.discount}元\n\n`);
   // $.msg($.name, '', `${$.name}：${$.discount}元`)
-}
-
-function showMsg2() {
-  return new Promise(async resolve => {
-    try {
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/jd_red.json`}).then((resp) => {
-        if (resp.statusCode === 200) {
-          console.log(`已刷新CDN缓存`)
-        } else {
-          console.log(`刷新失败::${JSON.stringify(resp)}`)
-        }
-      });
-    } catch (e) {
-      $.log(e)
-    } finally {
-      resolve()
-    }
-  })
 }
 
 async function writeFile() {

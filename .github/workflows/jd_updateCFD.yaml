@@ -47,8 +47,8 @@ jobs:
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: master
-      #- name: Purge CDN Cache
-      #  run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/cfd.json
+      - name: Purge CDN Cache
+        run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/cfd.json
       # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
