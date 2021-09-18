@@ -6,11 +6,11 @@ name: jd_updateCFD
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1,8,16 * * *'
+    - cron: '39 1,9,16 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_updateCFD
+    types: jd_updateDdworld
 jobs:
   build:
     env:
@@ -30,9 +30,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【更新财富岛】'
+      - name: '运行 【更新东东世界】'
         run: |
-          node jd_updateCfd.js
+          node jd_updateDdworld.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -48,7 +48,7 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           branch: master
       - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/cfd.json
+        run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/ddworld.json
       # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
