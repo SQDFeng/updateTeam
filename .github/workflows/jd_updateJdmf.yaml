@@ -1,16 +1,16 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 更新内容鉴赏官
+name: 更新小魔方
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 18,21 * * *'
+    - cron: '30 17,23 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_updateConnoisseur
+    types: jd_updateJdmf
 jobs:
   build:
     env:
@@ -29,9 +29,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【更新内容鉴赏官】'
+      - name: '运行 【更新小魔方】'
         run: |
-          node jd_updateConnoisseur.js
+          node jd_updateJdmf.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -39,16 +39,18 @@ jobs:
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
       - name: commit
         run: |
-          git config --global user.email ${{ secrets.EMAIL }}
-          git config --global user.name ${{ secrets.USER_NAME }}
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "update by ZFeng3242" -a || echo "Nothing to update"
+          git commit -m "update by Action" -a || echo "Nothing to update"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: master
+      - name: Purge CDN Cache
+        run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/jd_mf.json
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
         if: env.dst_key
