@@ -1,12 +1,12 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_updateJxmc
+name: 更新京喜牧场
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '1 16,0-15/2 * * *'
+    - cron: '0 */4 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -27,6 +27,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
+
       - name: npm install
         run: |
           npm install
@@ -35,7 +36,10 @@ jobs:
           node jd_updateJxmc.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          JD_DEBUG: ${{ secrets.JD_COOKIE }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+
       - name: commit
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -47,3 +51,15 @@ jobs:
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: master
+      #- name: Purge CDN Cache
+      #  run: curl https://purge.jsdelivr.net/gh/fickgit/updateTeam@master/jd_updateFactoryTuanId.json
+      # 我自己同步到gitee使用，其他人可忽略
+      - name: sync github -> gitee
+        uses: Yikun/hub-mirror-action@master
+        if: env.dst_key
+        with:
+          src: ${{ secrets.SRC_USER }}
+          dst: ${{ secrets.DST_USER }}
+          static_list: "updateTeam"
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}             
