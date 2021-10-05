@@ -88,7 +88,7 @@ async function userinfo() {
         $.helpCkList.push($.cookie);
         $.inviteCodeList.push(
           {
-            'use':$.UserName,
+            'name':$.UserName,
             'code':$.homeInfo.sharekey,
           }
         );
