@@ -34,7 +34,7 @@ jobs:
         run: |
           node jd_updateJxhb.js
         env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          JD_COOKIE: ${{ secrets.JXHB_COOKIE }}
     
       - name: commit
         run: |
