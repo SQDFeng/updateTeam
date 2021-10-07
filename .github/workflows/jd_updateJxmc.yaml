@@ -6,7 +6,7 @@ name: 更新京喜牧场
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '35 16,17 * * *'
   watch:
     types: started
   repository_dispatch:
