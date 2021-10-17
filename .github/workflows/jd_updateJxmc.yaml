@@ -13,8 +13,6 @@ on:
     types: jd_updateJxmc
 jobs:
   build:
-    env:
-      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # 我自己同步到gitee使用，其他人可忽略
     runs-on: ubuntu-latest
 
     if: github.event.repository.owner.id == github.event.sender.id
@@ -52,14 +50,4 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           branch: master
       - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/jxmc.json
-      # 我自己同步到gitee使用，其他人可忽略
-      - name: sync github -> gitee
-        uses: Yikun/hub-mirror-action@master
-        if: env.dst_key
-        with:
-          src: ${{ secrets.SRC_USER }}
-          dst: ${{ secrets.DST_USER }}
-          static_list: "updateTeam"
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}             
+        run: curl https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/jxmc.json           
