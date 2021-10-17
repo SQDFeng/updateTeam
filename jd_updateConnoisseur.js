@@ -1,11 +1,8 @@
-
-const $ = new Env('更新内容鉴赏官互助码');
-const fs = require('fs')
+const $ = new Env('更新内容鉴赏官');
+const fs = require('fs');
 const notify = $.isNode() ? require('./sendNotify') : '';
-//Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
-//IOS等用户直接用NobyDa的jd cookie
+let jdNotify = true;
 let cookiesArr = [], cookie = '', message;
 let isLoginInfo = {}
 $.shareCodes = []
