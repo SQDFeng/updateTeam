@@ -71,7 +71,7 @@ async function main() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jxhb.json`, `{"code":`+JSON.stringify($.packetIdArr)+`,"activeId":"`+$.activeId+`"}`);
+  await fs.writeFileSync(`./shareCodes/jxhb.json`, `{"code":`+JSON.stringify($.packetIdArr)+`,"activeId":"525597"}`);
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 
@@ -129,9 +129,7 @@ function getUserInfo() {
             } else {
               console.log(`获取助力码成功：${data.Data.strUserPin}\n`);
               if (data.Data.strUserPin) {
-                $.packetIdArr.push(
-                  data.Data.strUserPin
-                )
+                $.packetIdArr.push(data.Data.strUserPin)
               }
             }
             if (data.Data.strUserPin) {
