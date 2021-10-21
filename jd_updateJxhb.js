@@ -71,7 +71,7 @@ async function main() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jxhb.json`, JSON.stringify($.packetIdArr));
+  await fs.writeFileSync(`./shareCodes/jxhb.json`, `{"code":`+JSON.stringify($.packetIdArr)+`,"activeId":"`+$.activeId+`"}`);
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 
@@ -129,10 +129,9 @@ function getUserInfo() {
             } else {
               console.log(`获取助力码成功：${data.Data.strUserPin}\n`);
               if (data.Data.strUserPin) {
-                $.packetIdArr.push({
-                  strUserPin: data.Data.strUserPin,
-                  userName: $.UserName
-                })
+                $.packetIdArr.push(
+                  data.Data.strUserPin
+                )
               }
             }
             if (data.Data.strUserPin) {
