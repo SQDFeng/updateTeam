@@ -26,18 +26,10 @@ jobs:
           node-version: 10.x
       - name: npm install
         run: |
-          npm install
-#      - name: Set up Python 3.7
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: 3.7
-#      - name: '等待运行'
-#        run: |
-#              python3 accwait.py 0.1 0.1 59
-              
+          npm install              
       - name: '运行 【更新5G超级盲盒助力码】'
         run: |
-          node updateShareCode.js
+          node jd_updateJdmf.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
