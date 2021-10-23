@@ -1,4 +1,4 @@
-name: jd_updateYs
+name: 更新福利预售机
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【jd_updateYs】'
+      - name: '运行 【更新福利预售机】'
         run: |
           node jd_updateYs.js
         env:

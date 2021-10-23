@@ -1,4 +1,4 @@
-name: jd_updateRed
+name: 更新锦鲤红包
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【jd_updateRed】'
+      - name: '运行 【更新锦鲤红包】'
         run: |
           node jd_updateRed.js
         env:

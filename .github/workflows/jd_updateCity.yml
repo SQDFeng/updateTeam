@@ -1,4 +1,4 @@
-name: jd_updateCity
+name: 更新城城分现金
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【jd_updateCity】'
+      - name: '运行 【更新城城分现金】'
         run: |
           node jd_updateCity.js
         env:
