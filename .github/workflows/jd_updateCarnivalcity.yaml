@@ -28,7 +28,7 @@ jobs:
         run: |
           node jd_updateCarnivalcity.js
         env:
-          JD_COOKIE: ${{ secrets.JDCT_COOKIE }}
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
       - name: commit
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
