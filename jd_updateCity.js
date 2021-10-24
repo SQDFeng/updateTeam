@@ -59,7 +59,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
   async function writeFile() {
     let oldData = $.temp;
     if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-    await fs.writeFileSync(`./shareCodes/city.json`, JSON.stringify($.shareCodes));
+    await fs.writeFileSync(`./shareCodes/city.json`, `{"data":${JSON.stringify($.shareCodes)},"code":200}`);
     // await fs.writeFileSync('jd_shareCodes.json', JSON.stringify(oldData));
     console.log('文件写入成功，新的shareCodes已经替换');
   }
