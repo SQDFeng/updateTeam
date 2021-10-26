@@ -6,7 +6,7 @@ name: 更新东东玩家
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 1,8,16 * * *'
+    - cron: '15 1,8,16 * * *'
   watch:
     types: started
   repository_dispatch:
