@@ -30,7 +30,7 @@ jobs:
         run: |
           node jd_updateJxSign.js
         env:
-          JD_COOKIE: ${{ secrets.JDRed_COOKIE }}
+          JD_COOKIE: ${{ secrets.JxSign_COOKIE }}
       - name: commit
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
