@@ -59,24 +59,6 @@ const JD_API_HOST = 'https://api.m.jd.com/';
       $.done();
     })
 
-function showMsg() {
-  return new Promise(async resolve => {
-    try {
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/DX3242/updateTeam@master/shareCodes/jd_updateBeanHome.json`}).then((resp) => {
-        if (resp.statusCode === 200) {
-          console.log(`已刷新CDN缓存`)
-        } else {
-          console.log(`刷新失败::${JSON.stringify(resp)}`)
-        }
-      });
-    } catch (e) {
-      $.log(e)
-    } finally {
-      resolve()
-    }
-  })
-}
-
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
   await fs.writeFileSync(`./shareCodes/jd_updateBeanHome.json`, JSON.stringify($.codeInfo));
