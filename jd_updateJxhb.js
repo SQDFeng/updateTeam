@@ -157,7 +157,7 @@ function openRedPack(strPin, grade) {
           console.log(`\n${$.name}:  API查询请求失败 ‼️‼️`)
           $.logErr(err);
         } else {
-          // console.log(`拆红包结果：${data}`);
+          console.log(`拆红包结果：${data}`);
           data = JSON.parse(data)
           if (data.iRet === 0) {
             console.log(`拆红包成功:${data.sErrMsg}\n`);
