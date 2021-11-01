@@ -9,6 +9,7 @@ let cookiesArr = [],
     cookie = '',
     message;
 $.shareCodes=[];
+let linkId = 'yCcpwTLIbY6pjaM42ACUVg';
 
 
 if ($.isNode()) {
@@ -64,7 +65,7 @@ if ($.isNode()) {
 
 function home() {
     return new Promise((resolve) => {
-        let body = { "linkId": "SS55rTBOHtnLCm3n9UMk7Q" }
+        let body = { "linkId": `${linkId}` }
         $.get(taskurl('happyDigHome', body), async (err, resp, data) => {
             //console.log(data)  
             try {
